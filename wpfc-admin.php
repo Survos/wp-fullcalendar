@@ -36,7 +36,7 @@ class WPFC_Admin {
 						<div class="handlediv" title="Click to toggle"></div>
 						<h3 class="hndle">About FullCalendar</h3>
 						<div class="inside">
-							<p><a href="http://arshaw.com/fullcalendar/">FullCalendar</a> is a jQuery plugin developed by Adam Shaw, which adds a beautiful AJAX-enabled calendar which can communicate with your blog.</p> 
+							<p><a href="http://arshaw.com/fullcalendar/">FullCalendar</a> is a jQuery plugin developed by Adam Shaw, which adds a beautiful AJAX-enabled calendar which can communicate with your blog.</p>
 							<p>If you find this calendar particularly useful and can spare a few bucks, please <a href="http://arshaw.com/fullcalendar/">donate something to his project</a>, most of the hard work here was done by him and he gives this out freely for everyone to use!</p>
 						</div>
 					</div>
@@ -73,7 +73,7 @@ class WPFC_Admin {
 							</p>
 							<p>
 								<ul class="wpfc-post-types">
-									<?php 
+									<?php
 									$selected_taxonomies = get_option('wpfc_post_taxonomies');
 									foreach( get_post_types( apply_filters('wpfc_get_post_types_args', array('public'=>true ))) as $post_type ){
 		 								$checked = get_option('wpfc_default_type') == $post_type ? 'checked':'';
@@ -109,7 +109,7 @@ class WPFC_Admin {
 				            </script>
 						    <h2><?php _e('Calendar Options','wpfc'); ?></h2>
 							<table class='form-table'>
-								<?php 
+								<?php
 								$available_views = apply_filters('wpfc_available_views',array('month'=>'Month','basicWeek'=>'Week (basic)','basicDay'=>'Day (basic)','agendaWeek'=>'Week (agenda)','agendaDay'=>'Day (agenda)'));
 								?>
 								<tr>
@@ -191,21 +191,21 @@ class WPFC_Admin {
 								<tr>
 									<td><label><?php  _e('Featured image size','wpfc'); ?></label></td>
 									<td>
-										<?php _e('Width','wpfc'); ?> : <input name="wpfc_qtips_image_w" type="text" style="width:40px;" value="<?php echo get_option('wpfc_qtips_image_w'); ?>" /> 
+										<?php _e('Width','wpfc'); ?> : <input name="wpfc_qtips_image_w" type="text" style="width:40px;" value="<?php echo get_option('wpfc_qtips_image_w'); ?>" />
 										<?php _e('Height','wpfc'); ?> : <input name="wpfc_qtips_image_h" type="text" style="width:40px;" value="<?php echo get_option('wpfc_qtips_image_h'); ?>" />
 									</td>
 								</tr>
 							</table>
-							
-							
+
+
 							<h2><?php _e ( 'JS and CSS Files (Optimization)', 'wpfc' ); ?></h2>
 				            <table class="form-table">
 								<?php
 								wpfc_options_input_text( __( 'Load JS and CSS files on', 'dbem' ), 'wpfc_scripts_limit', __('Write the page IDs where you will display the FullCalendar on so CSS and JS files are only included on these pages. For multiple pages, use comma-seperated values e.g. 1,2,3. Leaving this blank will load our CSS and JS files on EVERY page, enter -1 for the home page.','wpfc') );
 								?>
 							</table>
-							
-							
+
+
 							<input type="hidden" name="_wpnonce" value="<?php echo wp_create_nonce('wpfc_options_save'); ?>" />
 							<p class="submit"><input type="submit" value="<?php _e('Submit Changes','wpfc'); ?>" class="button-primary"></p>
 						</form>

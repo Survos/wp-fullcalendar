@@ -53,7 +53,7 @@ class WP_FullCalendar{
 		}
 		//END Events Manager Integration
 	}
-	
+
 	function enqueue_scripts(){
 	    global $wp_query;
 	    $obj_id = is_home() ? '-1':$wp_query->get_queried_object_id();
@@ -181,7 +181,7 @@ class WP_FullCalendar{
 	    $items = array();
 	    $item_dates_more = array();
 	    $item_date_counts = array();
-	    
+
 	    //Create our own loop here and tamper with the where sql for date ranges, as per http://codex.wordpress.org/Class_Reference/WP_Query#Time_Parameters
 	    function wpfc_temp_filter_where( $where = '' ) {
 	    	$where .= " AND post_date >= '".date("Y-m-d", $_REQUEST['start'])."' AND post_date < '".date("Y-m-d", $_REQUEST['end'])."'";
@@ -220,7 +220,7 @@ class WP_FullCalendar{
 	}
 
 	/**
-	 * Called during AJAX request for qtip content for a calendar item 
+	 * Called during AJAX request for qtip content for a calendar item
 	 */
 	function qtip_content(){
 	    $content = '';
@@ -237,7 +237,7 @@ class WP_FullCalendar{
 		echo apply_filters('wpfc_qtip_content', $content);
 		die();
 	}
-	
+
 	/**
 	 * Returns the calendar HTML setup and primes the js to load at wp_footer
 	 * @param array $args
@@ -293,14 +293,14 @@ class WP_FullCalendar{
 			var wpfc_data = { action : 'WP_FullCalendar'<?php
 					//these arguments were assigned earlier on when displaying the calendar, and remain constant between ajax calls
 					if(!empty(self::$args)){ echo ", "; }
-					$strings = array(); 
+					$strings = array();
 					foreach( self::$args as $key => $arg ){
-						$arg = is_numeric($arg) ? (int) $arg : "'$arg'"; 
-						$strings[] = "'$key'" ." : ". $arg ; 
+						$arg = is_numeric($arg) ? (int) $arg : "'$arg'";
+						$strings[] = "'$key'" ." : ". $arg ;
 					}
 					echo implode(", ", $strings);
 			?> };
-			jQuery(document).ready( function($){	
+			jQuery(document).ready( function($){
 				var fullcalendar_args = {
 					timeFormat: '<?php echo get_option('wpfc_timeFormat', 'h(:mm)t'); ?>',
 					defaultView: '<?php echo get_option('wpfc_defaultView', 'month'); ?>',

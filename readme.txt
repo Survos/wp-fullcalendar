@@ -104,7 +104,7 @@ Install this plugin like a normal WordPress plugin. Once activated, you'll see a
 = 0.6 =
 * added taxonomy shortcode attributes
 * added localization
-* year/month shortcode arguments load the initial month shown on calendar 
+* year/month shortcode arguments load the initial month shown on calendar
 
 = 0.1 - 0.5 =
 * first version, ported from Events Manager Fullcalendar 1.4
