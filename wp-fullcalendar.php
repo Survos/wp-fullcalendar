@@ -30,7 +30,7 @@ class WP_FullCalendar{
 	static $tip_styles_css3 = array('shadow','rounded');
 	static $tip_positions = array('top left', 'top right', 'top center', 'bottom left', 'bottom right', 'bottom center', 'right center', 'right top', 'right bottom', 'left center', 'left top', 'left bottom', 'center');
 
-	function init() {
+	public static function init() {
 		//Scripts
 		if( !is_admin() ){ //show only in public area
 		    add_action('wp_enqueue_scripts',array('WP_FullCalendar','enqueue_scripts'));
@@ -54,7 +54,7 @@ class WP_FullCalendar{
 		//END Events Manager Integration
 	}
 
-	function enqueue_scripts(){
+	public static function enqueue_scripts(){
 	    global $wp_query;
 	    $obj_id = is_home() ? '-1':$wp_query->get_queried_object_id();
 	    $wpfc_scripts_limit = get_option('wpfc_scripts_limit');
@@ -67,7 +67,7 @@ class WP_FullCalendar{
 	    }
 	}
 
-	function localize_script(){
+	public static function localize_script(){
 		$js_vars = array();
 		$js_vars['ajaxurl'] = admin_url('admin-ajax.php');
 		$js_vars['firstDay'] =  get_option('start_of_week');
@@ -155,7 +155,7 @@ class WP_FullCalendar{
 	/**
 	 * Catches ajax requests by fullcalendar
 	 */
-	function ajax(){
+	public static function ajax(){
 	    global $post;
 	    //sort out args
 	    unset($_REQUEST['month']); //no need for these two
@@ -222,7 +222,7 @@ class WP_FullCalendar{
 	/**
 	 * Called during AJAX request for qtip content for a calendar item
 	 */
-	function qtip_content(){
+	public static function qtip_content(){
 	    $content = '';
 		if( !empty($_REQUEST['post_id']) ){
 	        $post = get_post($_REQUEST['post_id']);
@@ -243,7 +243,7 @@ class WP_FullCalendar{
 	 * @param array $args
 	 * @return string
 	 */
-	function calendar( $args = array() ){
+	public static function calendar( $args = array() ){
 		if (is_array($args) ) self::$args = array_merge(self::$args, $args);
 		self::$args['month'] = (!empty($args['month'])) ? $args['month']-1:date('m', current_time('timestamp'))-1;
 		self::$args['year'] = (!empty($args['year'])) ? $args['year']:date('Y', current_time('timestamp'));
@@ -284,7 +284,7 @@ class WP_FullCalendar{
 	 * Run at wp_footer if a calendar is output earlier on in the page.
 	 * @uses self::$args - which was modified during self::calendar()
 	 */
-	function footer_js(){
+	public static function footer_js(){
 		$r = array();
 		?>
 		<script type='text/javascript'>

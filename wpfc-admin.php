@@ -1,12 +1,12 @@
 <?php
 class WPFC_Admin {
-	function menus(){
+	public static function menus(){
 		$page = add_options_page('WP FullCalendar', 'WP FullCalendar', 'manage_options', 'wp-fullcalendar', array('WPFC_Admin','admin_options'));
 		wp_enqueue_style('wp-fullcalendar', plugins_url('includes/css/admin.css',__FILE__));
 	}
 
 
-	function admin_options(){
+	public static function admin_options(){
 		if( !empty($_REQUEST['_wpnonce']) && wp_verify_nonce($_REQUEST['_wpnonce'], 'wpfc_options_save')){
 			foreach($_REQUEST as $option_name => $option_value){
 				if(substr($option_name, 0, 5) == 'wpfc_'){
